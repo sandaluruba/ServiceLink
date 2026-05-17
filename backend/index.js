@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const JobRequest = require("./model/JobRequest.model.js");
 const app = express()
 const jobRequestRoute = require('./routes/jobRequest.routes.js');
+const authRoute = require("./routes/auth.routes.js");
 
 const allowedOrigins = [
     'http://localhost:3000',
@@ -22,6 +23,7 @@ app.use(express.json());
 
 // Import Routes
 app.use('/api/jobs', jobRequestRoute);
+app.use('/api/auth', authRoute);
 
 
 
