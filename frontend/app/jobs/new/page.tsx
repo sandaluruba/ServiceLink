@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import API from "@/services/api";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
 
 export default function NewJobPade() {
 
@@ -59,6 +60,13 @@ export default function NewJobPade() {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            router.push("/login");
+        }
+    }, []);
 
     return (
         <main>

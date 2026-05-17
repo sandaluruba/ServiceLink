@@ -7,6 +7,7 @@ import { Job } from "@/types/job";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+
 const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
         case "open":
@@ -27,6 +28,7 @@ export default function JobDetails() {
     const [job, setJob] = useState<Job | null>(null);
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
 
@@ -44,6 +46,11 @@ export default function JobDetails() {
         if (id) fetchjob();
 
     }, [id]);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+    }, []);
 
     const handleStatus = async (newStatus: string) => {
         setStatus(newStatus);
@@ -147,11 +154,17 @@ export default function JobDetails() {
                         </select>
 
 
-                        <button
-                            onClick={deleteJob}
-                            className="w-full bg-[#ba1a1a] hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors"
-                        >🗑 Delete Job</button>
-                        <p className="text-xs text-gray-400 italic text-center mt-2">Warning: This action cannot be undone.</p>
+                        {isLoggedIn && (
+                            <button
+                                onClick={deleteJob}
+                                className="w-full bg-[#ba1a1a] hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors"
+                            >
+                                🗑 Delete Job
+                            </button>
+                        )}
+                        {isLoggedIn && (
+                            <p className="text-xs text-gray-400 italic text-center mt-2">Warning: This action cannot be undone.</p>
+                        )}
                     </div>
                 </div>
             </div>
