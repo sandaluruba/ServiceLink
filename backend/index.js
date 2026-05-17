@@ -9,7 +9,15 @@ const JobRequest = require("./model/JobRequest.model.js");
 const app = express()
 const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.FRONTEND_URL // Set this on Render after Vercel deploys
+].filter(Boolean);
+
+app.use(cors({
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 
 // Import Routes
@@ -26,8 +34,9 @@ app.get('/', (req, res) => {
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Database Connected Successfully");
-        app.listen(5000, () => {
-            console.log('Server is running on port 5000');
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
         });
     })
     .catch((error) => {
