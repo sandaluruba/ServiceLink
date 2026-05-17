@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+body {
+  background: #fcf8fa;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-6;
+}
