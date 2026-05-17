@@ -10,13 +10,13 @@ const app = express()
 const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  process.env.FRONTEND_URL // Set this on Render after Vercel deploys
+    'http://localhost:3000',
+    process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 app.use(cors({
-  origin: allowedOrigins,
-  optionsSuccessStatus: 200
+    origin: allowedOrigins,
+    optionsSuccessStatus: 200
 }));
 app.use(express.json());
 
