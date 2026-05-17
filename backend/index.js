@@ -11,7 +11,7 @@ const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
 const allowedOrigins = [
     'http://localhost:3000',
-    'http://servicelink-kappa.vercel.app',
+    'https://servicelink-kappa.vercel.app',
 ].filter(Boolean);
 
 app.use(cors({
