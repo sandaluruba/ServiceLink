@@ -11,7 +11,7 @@ const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://servicelink-frontend.vercel.app',
+    'https://service-link-three.vercel.app',
 ].filter(Boolean);
 
 app.use(cors({
