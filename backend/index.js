@@ -3,11 +3,13 @@ const dns = require('node:dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const JobRequest = require("./model/JobRequest.model.js");
 const app = express()
 const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
+app.use(cors());
 app.use(express.json());
 
 // Import Routes

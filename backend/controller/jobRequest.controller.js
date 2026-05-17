@@ -52,7 +52,7 @@ const updatejobRequest = async (req, res) => {
 
         if (!jobRequest) {
 
-            res.status(404).json({message: "Job Request Not Found"});
+            return res.status(404).json({message: "Job Request Not Found"});
 
         }
 
@@ -76,7 +76,7 @@ const deleteJobRequest = async (req, res) => {
 
         if(!jobRequest) {
 
-            res.status(404).json({message: "Job Request Not Found"});
+            return res.status(404).json({message: "Job Request Not Found"});
             
         }
 
