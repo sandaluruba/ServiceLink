@@ -11,8 +11,7 @@ const jobRequestRoute = require('./routes/jobRequest.routes.js');
 
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://servicelink-frontend.vercel.app',
-    process.env.FRONTEND_URL // Set this on Render after Vercel deploys
+    process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 app.use(cors({
