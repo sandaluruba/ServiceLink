@@ -31,13 +31,13 @@ export default function NewJobPade() {
     const validate = () => {
         const newErrors: Record<string, string> = {};
 
-        if (!form.title.trim()) newErrors.title = "Title is requuired.";
-        if (!form.description.trim()) newErrors.description = "Description is requuired.";
+        if (!form.title.trim()) newErrors.title = "Title is required.";
+        if (!form.description.trim()) newErrors.description = "Description is required.";
         if (!form.contactEmail.trim()) newErrors.contactEmail = "Email is required.";
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.contactEmail)) newErrors.contactEmail = "Enter a valid email address."
-        if (!form.contactName.trim()) newErrors.contactName = "Name is requuired.";
-        if (!form.location.trim()) newErrors.location = "Location is requuired.";
-        if (!form.category.trim()) newErrors.category = "Category is requuired.";
+        if (!form.contactName.trim()) newErrors.contactName = "Name is required.";
+        if (!form.location.trim()) newErrors.location = "Location is required.";
+        if (!form.category.trim()) newErrors.category = "Category is required.";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
