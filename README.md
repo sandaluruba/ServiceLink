@@ -11,6 +11,7 @@ A full-stack **Service Request Board** application that connects users who need 
 - [Prerequisites](#prerequisites)
 - [Environment Variables](#environment-variables)
 - [Setup Instructions](#setup-instructions)
+- [Seed Sample Data](#seed-sample-data)
 - [Running the Application](#running-the-application)
 - [API Reference](#api-reference)
 - [Features](#features)
@@ -136,7 +137,58 @@ Create the `.env.local` file as described in the [Environment Variables](#enviro
 
 ---
 
+## Seed Sample Data
+
+To quickly populate your database with sample job requests for testing or demonstration purposes, a seed script is included.
+
+### Location
+
+```
+backend/seed.js
+```
+
+### What it does
+
+- Connects to your MongoDB database using `MONGO_URI` from your `.env`
+- **Clears all existing job requests** from the database
+- Inserts **7 sample job requests** with various categories and statuses
+
+### How to run
+
+Make sure your `backend/.env` is configured, then from inside the `backend/` folder run:
+
+```bash
+cd backend
+node seed.js
+```
+
+### Expected output
+
+```
+Connected to MongoDB
+Cleared existing jobs
+Inserted sample jobs successfully!
+Disconnected from MongoDB
+```
+
+### Sample jobs included
+
+| Title | Category | Status |
+|---|---|---|
+| Fix Leaking Kitchen Tap | Plumbing | Open |
+| Repaint Living Room Walls | Painting | Open |
+| Repair Ceiling Fan | Electrical | In Progress |
+| Garden Cleanup After Monsoon | Gardening | Open |
+| Install CCTV Camera at Home | Security | Open |
+| Fix Broken Tiles in Bathroom | Tiling | Closed |
+| Deep Clean Entire House | Cleaning | Open |
+
+> ⚠️ **Warning:** Running `seed.js` will **delete all existing job data** before inserting samples. Remove the `deleteMany` line in `seed.js` if you want to keep existing records.
+
+---
+
 ## Running the Application
+
 
 Both servers must be running simultaneously. Open **two separate terminals**.
 
