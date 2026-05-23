@@ -139,33 +139,37 @@ export default function JobDetails() {
                             <span>Posted: {new Date(job.createdAt).toLocaleDateString()}</span>
                         </div>
                     </div>
-                    <div className="bg-white rounded-2xl border border-[#c9cfd6] p-6 shadow-sm">
-                        <h2 className="text-lg font-semibold mb-4">Management Actions</h2>
-                        <label className="text-sm text-gray-500 block mb-1">Update Status</label>
-                        <select
-                            value={status}
-                            onChange={(e) =>
-                                handleStatus(e.target.value)}
-                            className="w-full border border-[#c9cfd6] rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                        >
-                            <option value="Open">Open</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Closed">Closed</option>
-                        </select>
+                    {isLoggedIn && (
+                        <>
+                            <div className="bg-white rounded-2xl border border-[#c9cfd6] p-6 shadow-sm">
+                                <h2 className="text-lg font-semibold mb-4">Management Actions</h2>
+                                <label className="text-sm text-gray-500 block mb-1">Update Status</label>
+                                <select
+                                    value={status}
+                                    onChange={(e) =>
+                                        handleStatus(e.target.value)}
+                                    className="w-full border border-[#c9cfd6] rounded-lg px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                                >
+                                    <option value="Open">Open</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
 
 
-                        {isLoggedIn && (
-                            <button
-                                onClick={deleteJob}
-                                className="w-full bg-[#ba1a1a] hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors"
-                            >
-                                🗑 Delete Job
-                            </button>
-                        )}
-                        {isLoggedIn && (
-                            <p className="text-xs text-gray-400 italic text-center mt-2">Warning: This action cannot be undone.</p>
-                        )}
-                    </div>
+                                {isLoggedIn && (
+                                    <button
+                                        onClick={deleteJob}
+                                        className="w-full bg-[#ba1a1a] hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors"
+                                    >
+                                        🗑 Delete Job
+                                    </button>
+                                )}
+                                {isLoggedIn && (
+                                    <p className="text-xs text-gray-400 italic text-center mt-2">Warning: This action cannot be undone.</p>
+                                )}
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
 
