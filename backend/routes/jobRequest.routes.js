@@ -8,7 +8,7 @@ const protect = require('../middleware/auth.middleware.js');
 router.get('/', getAllJobRequest);
 router.get('/:id', getJobRequest);
 router.post('/', protect, createJobRequest);
-router.patch('/:id', updatejobRequest);
+router.patch('/:id',protect, updatejobRequest);
 router.delete('/:id', protect, deleteJobRequest);
 
 
